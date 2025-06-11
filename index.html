@@ -93,6 +93,52 @@
       color: white;
       margin-top: 3rem;
     }
+
+    /* Popup styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+    }
+
+    .popup {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 90%;
+      width: 400px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .popup input {
+      width: 90%;
+      padding: 0.6rem;
+      margin: 1rem 0;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .popup button {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .popup button:hover {
+      background: #1b5e20;
+    }
   </style>
 </head>
 <body>
@@ -111,7 +157,7 @@
       <p class="price">$2.50</p>
       <p class="free">Now: FREE!</p>
       <p class="stock">🛒 5 in stock</p>
-      <button class="button">Buy Now</button>
+      <button class="button" onclick="startOrder()">Buy Now</button>
     </div>
 
     <!-- 30 Honey -->
@@ -120,7 +166,7 @@
       <p class="price">$1.50</p>
       <p class="free">Now: FREE!</p>
       <p class="stock">⚡ Instant Delivery</p>
-      <button class="button">Buy Now</button>
+      <button class="button" onclick="startOrder()">Buy Now</button>
     </div>
 
   </div>
@@ -128,6 +174,66 @@
   <footer>
     &copy; 2025 Grow a Garden Pets. Not affiliated with Roblox.
   </footer>
+
+  <!-- Popup Overlay -->
+  <div class="popup-overlay" id="popupOverlay">
+    <div class="popup" id="popupContent">
+      <p id="popupText">Processing order...</p>
+    </div>
+  </div>
+
+  <script>
+    function startOrder() {
+      const popupOverlay = document.getElementById('popupOverlay');
+      const popupContent = document.getElementById('popupContent');
+      const popupText = document.getElementById('popupText');
+
+      // Show overlay and first message
+      popupOverlay.style.display = 'flex';
+      popupText.textContent = "Processing order...";
+
+      // Wait 10 seconds then ask for Roblox username
+      setTimeout(() => {
+        popupContent.innerHTML = `
+          <p>✅ Successfully processed order!</p>
+          <p>Enter your Roblox username:</p>
+          <input type="text" id="robloxUser" placeholder="e.g. RobloxFan123" />
+          <button onclick="confirmRobloxUsername()">Confirm</button>
+        `;
+      }, 10000);
+    }
+
+    function confirmRobloxUsername() {
+      const robloxUser = document.getElementById('robloxUser').value;
+      if (!robloxUser.trim()) {
+        alert("Please enter your Roblox username.");
+        return;
+      }
+
+      const popupContent = document.getElementById('popupContent');
+      popupContent.innerHTML = `
+        <p>Thank you, ${robloxUser}!</p>
+        <p>Now enter your Discord username:</p>
+        <input type="text" id="discordUser" placeholder="e.g. user#0001" />
+        <button onclick="confirmDiscordUsername()">Confirm</button>
+      `;
+    }
+
+    function confirmDiscordUsername() {
+      const discordUser = document.getElementById('discordUser').value;
+      if (!discordUser.trim()) {
+        alert("Please enter your Discord username.");
+        return;
+      }
+
+      const popupContent = document.getElementById('popupContent');
+      popupContent.innerHTML = `
+        <p>🎉 All set!</p>
+        <p>We'll deliver your item to <strong>${discordUser}</strong> shortly.</p>
+        <button onclick="document.getElementById('popupOverlay').style.display='none'">Close</button>
+      `;
+    }
+  </script>
 
 </body>
 </html>
