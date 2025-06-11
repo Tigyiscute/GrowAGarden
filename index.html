@@ -6,55 +6,92 @@
   <title>Grow a Garden Pets</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f0f4f8;
       margin: 0;
-      background: #f4f4f4;
       color: #333;
     }
+
     header {
-      background-color: #2e7d32;
+      background: linear-gradient(135deg, #43a047, #2e7d32);
       color: white;
-      padding: 1rem 2rem;
-      text-align: center;
-    }
-    .container {
       padding: 2rem;
-      max-width: 900px;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    .container {
+      max-width: 1000px;
       margin: auto;
+      padding: 2rem;
+      display: grid;
+      gap: 2rem;
     }
-    .product, .currency {
+
+    .card {
       background: white;
+      border-radius: 12px;
       padding: 1.5rem;
-      margin-bottom: 1.5rem;
-      border-radius: 10px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 6px 12px rgba(0,0,0,0.08);
+      transition: transform 0.2s ease;
+      position: relative;
     }
-    .product img {
+
+    .card:hover {
+      transform: scale(1.02);
+    }
+
+    .card img {
       max-width: 120px;
-      float: right;
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
     }
+
     h2 {
       margin-top: 0;
+      color: #2e7d32;
     }
+
     .price {
       font-size: 1.2rem;
-      text-decoration: line-through;
       color: #888;
+      text-decoration: line-through;
     }
+
     .free {
-      color: green;
+      color: #2e7d32;
       font-weight: bold;
-      font-size: 1.5rem;
+      font-size: 1.3rem;
     }
+
     .stock {
       font-size: 0.9rem;
       color: #555;
     }
+
+    .button {
+      background: #2e7d32;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.5rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .button:hover {
+      background: #1b5e20;
+    }
+
     footer {
       text-align: center;
       padding: 1rem;
       background: #333;
       color: white;
+      margin-top: 3rem;
     }
   </style>
 </head>
@@ -62,29 +99,34 @@
 
   <header>
     <h1>Grow a Garden Pets</h1>
-    <p>Adopt premium pets and in-game items for Roblox!</p>
+    <p>Exclusive Roblox pets & currency at unbeatable prices!</p>
   </header>
 
   <div class="container">
-    
-    <section class="product">
+
+    <!-- Silver Monkey -->
+    <div class="card">
       <h2>🐵 Silver Monkey</h2>
       <img src="silver-monkey-icon.png" alt="Silver Monkey Icon">
       <p class="price">$2.50</p>
       <p class="free">Now: FREE!</p>
-      <p class="stock">Only 5 in stock – get yours now!</p>
-    </section>
+      <p class="stock">🛒 5 in stock</p>
+      <button class="button">Buy Now</button>
+    </div>
 
-    <section class="currency">
-      <h2>💰 Currencies</h2>
-      <p><strong>30 Honey (INSTANT MACHINE FRUIT)</strong></p>
-      <p>Delivers instantly to your Roblox account after purchase.</p>
-    </section>
+    <!-- 30 Honey -->
+    <div class="card">
+      <h2>🍯 30 Honey (INSTANT MACHINE FRUIT)</h2>
+      <p class="price">$1.50</p>
+      <p class="free">Now: FREE!</p>
+      <p class="stock">⚡ Instant Delivery</p>
+      <button class="button">Buy Now</button>
+    </div>
 
   </div>
 
   <footer>
-    &copy; 2025 Grow a Garden Pets. Not affiliated with Roblox Corporation.
+    &copy; 2025 Grow a Garden Pets. Not affiliated with Roblox.
   </footer>
 
 </body>
